@@ -4,4 +4,4 @@ jdk:
 script:
   mvn clean install
 after_success:
-- bash <(curl -s https://codecov.io/bash)
+- bash <(curl -s https://codecov.io/bash) -t 6a0999f9-de1a-4117-858d-21a77f0a1600
