@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.fererlab</groupId>
+	<artifactId>archetype-test</artifactId>
+	<version>0.0.1</version>
+	<packaging>jar</packaging>
+
+	<name>archetype-test</name>
+	<description>Archetype Test</description>
+
+	<developers>
+	</developers>
+
+	<properties>
+		<!-- encodings and java versions-->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<project.encoding>UTF-8</project.encoding>
+		<project.source.version>1.8</project.source.version>
+		<project.target.version>1.8</project.target.version>
+		<java.version>1.8</java.version>
+		<compiler.version>1.8</compiler.version>
+		<!-- plugin versions -->
+		<version.maven-compiler-plugin>3.7.0</version.maven-compiler-plugin>
+		<version.maven-surefire-plugin>2.19.1</version.maven-surefire-plugin>
+		<!-- test -->
+		<version.junit>4.12</version.junit>
+		<version.jbehave-core>4.1</version.jbehave-core>
+		<version.mockito-all>1.10.19</version.mockito-all>
+		<!-- other -->
+		<version.lombok>1.16.18</version.lombok>
+		<version.orika-core>1.5.2</version.orika-core>
+
+	</properties>
+
+	<build>
+		<plugins>
+			<!-- COMPILER PLUGIN -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${version.maven-compiler-plugin}</version>
+				<configuration>
+					<compilerVersion>1.8</compilerVersion>
+					<source>${project.source.version}</source>
+					<target>${project.target.version}</target>
+				</configuration>
+			</plugin>
+			<!-- SUREFIRE integration tests as BDD stories -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${version.maven-surefire-plugin}</version>
+				<executions>
+					<execution>
+						<id>integration-test</id>
+						<phase>integration-test</phase>
+						<goals>
+							<goal>test</goal>
+						</goals>
+						<configuration>
+							<skip>false</skip>
+							<includes>
+								<include>**/story/*.java</include>
+							</includes>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+
+		<!-- ********** -->
+		<!-- PACK WITH  -->
+		<!-- ********** -->
+
+		<!-- ORIKA -->
+		<dependency>
+			<groupId>ma.glasnost.orika</groupId>
+			<artifactId>orika-core</artifactId>
+			<version>${version.orika-core}</version>
+		</dependency>
+
+
+		<!-- ********** -->
+		<!--  PROVIDED  -->
+		<!-- ********** -->
+
+		<!-- lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${version.lombok}</version>
+			<scope>provided</scope>
+		</dependency>
+
+
+		<!-- **** -->
+		<!-- TEST -->
+		<!-- **** -->
+
+		<!-- TEST -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${version.junit}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jbehave</groupId>
+			<artifactId>jbehave-core</artifactId>
+			<version>${version.jbehave-core}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>${version.mockito-all}</version>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
+
+
+</project>
